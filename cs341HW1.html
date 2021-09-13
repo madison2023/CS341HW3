@@ -1,0 +1,145 @@
+<!-- Rachel Madison -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cheesecake Order Form</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"/></script>
+	<script>
+
+	$(document).ready(function(){
+		function changeDropDownText(month) {
+			$("#dropDownButton").text(month)
+		}
+
+		// Submits an order
+  		$("#orderbutton").click(function(){
+			//Checks for "vegan" in any lower/upper case combination
+			if($("#notes").val().toLowerCase().includes("vegan")) {
+				alert("Warning: Our Cheesecake contains dairy");
+			} else {
+				var numCheesecake = $('#num option:selected').text();
+				var typeCheesecake = $('input[name="topping"]:checked').val();
+				var notes = $("#notes").val();
+				//Hides input forms
+    			$("#hideForms").remove();
+				//Displays order details
+				$("#orderPlacedText").prepend("Thank you! Your order has been placed. " + numCheesecake + " " + typeCheesecake+ " cheesecake(s) " + "Notes: " + notes);
+				
+			}
+  		});
+
+		//changes the dropdown text when an element is clicked
+		$('#Jan').click(function(){ changeDropDownText("Jan"); });
+		$('#Feb').click(function(){ changeDropDownText("Feb"); });
+		$('#Mar').click(function(){ changeDropDownText("Mar"); });
+		$('#Apr').click(function(){ changeDropDownText("Apr"); });
+		$('#May').click(function(){ changeDropDownText("May"); });
+		$('#Jun').click(function(){ changeDropDownText("Jun"); });
+		$('#Jul').click(function(){ changeDropDownText("Jul"); });
+		$('#Aug').click(function(){ changeDropDownText("Aug"); });
+		$('#Sep').click(function(){ changeDropDownText("Sep"); });
+		$('#Oct').click(function(){ changeDropDownText("Oct"); });
+		$('#Nov').click(function(){ changeDropDownText("Nov"); });
+		$('#Dec').click(function(){ changeDropDownText("Dec"); });
+
+	});
+	
+	</script>
+	
+</head>
+
+<body>
+
+<h1>Cheesecake Order Form</h1><br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="Cheesecake" width="150" height="150"><br>
+
+<div id="hideForms">
+<table>
+	<!-- Labels -->
+	<tr>
+		<td>
+			<label for="num">Quantity</label><br>
+		</td>
+
+		<td>
+			<p>Topping</p>
+		</td>
+	</tr>
+	
+	<!-- Entering number and kind of cheesecake -->
+	<tr>
+		<td>
+		<form id="numCheesecake">
+			<select style="background-color:lightgrey" name="num" id="num">
+  				<option value="1">1</option>
+  				<option value="2">2</option>
+  				<option value="3">3</option>
+  				<option value="4">4</option>
+			</select>
+		</form>
+		</td>
+
+		<td>
+		<form id="typeCheesecake">
+			<input type="radio" id="plain" name="topping" value="Plain">
+			<label for="plain">Plain</label><br>
+			<input type="radio" id="cherry" name="topping" value="Cherry">
+			<label for="cherry">Cherry</label><br>
+			<input type="radio" id="chocolate" name="topping" value="Chocolate">
+			<label for="chocolate">Chocolate</label><br>
+		</form>
+		</td>
+	</tr>
+</table>
+
+
+<p>Notes:</p>
+<form id="notesForm">
+	<textarea id="notes" placeholder="Enter any special instructions here."></textarea><br>
+</form>
+
+<form id="orderForm">
+<input id="orderbutton" style="background-color:lightgrey" type="button" value="Order">
+</form>
+
+</div>
+
+<h2 id="orderPlacedText"></h2>
+
+
+  
+  
+
+<h3 id="orderText">Total Orders Last </h3>
+
+<div class="dropdown" id="orderDropdown">
+	<button class="dropbtn" id="dropDownButton">Jan</button>
+	<div class="dropdown-content">
+	  <a id="Jan" href="#" >Jan</a>
+	  <a id="Feb" href="#" >Feb</a>
+	  <a id="Mar" href="#" >Mar</a>
+	  <a id="Apr" href="#" >Apr</a>
+	  <a id="May" href="#" >May</a>
+	  <a id="Jun" href="#" >Jun</a>
+	  <a id="Jul" href="#" >Jul</a>
+	  <a id="Aug" href="#" >Aug</a>
+	  <a id="Sep" href="#" >Sep</a>
+	  <a id="Oct" href="#" >Oct</a>
+	  <a id="Nov" href="#" >Nov</a>
+	  <a id="Dec" href="#" >Dec</a>
+	</div>
+</div>
+
+
+<ul>
+	<li>11 cherry</li>
+	<li>17 chocolate</li>
+	<li>31 plain</li>
+</ul>
+
+</body>
+</html>
