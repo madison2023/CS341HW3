@@ -2,17 +2,18 @@
 
 $(document).ready(function(){
 
-  //post data from server to the list with last month's orders
-  $.post('/orders', function(data) {
-    const orders = JSON.parse(data);
-    //editing each bullet point
-    $("ul li:eq(0)").text(orders[0].quantity + " " + orders[0].topping);
-    $("ul li:eq(1)").text(orders[1].quantity + " " + orders[1].topping);
-    $("ul li:eq(2)").text(orders[2].quantity + " " + orders[2].topping);
-  });
-
+  
   function changeDropDownText(month) {
     $("#dropDownButton").text(month);
+    //post data from server to the list with last month's orders
+    $.post('/orders', function(data) {
+      const orders = JSON.parse(data);
+      //editing each bullet point
+      $("ul li:eq(0)").text(orders[0].quantity + " " + orders[0].topping);
+      $("ul li:eq(1)").text(orders[1].quantity + " " + orders[1].topping);
+      $("ul li:eq(2)").text(orders[2].quantity + " " + orders[2].topping);
+    });
+
   }
 
 
